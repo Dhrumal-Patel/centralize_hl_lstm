@@ -10,9 +10,9 @@ csv.field_size_limit(2147483647)
 class Config:
     def __init__(self, overlap=0.0):
         self.OVERLAP = overlap
-        self.SAVE_FOLDER = os.path.join(os.getcwd(), f'federated_results/overlap__{}'.format(overlap)
-        self.DATA_FILE = '/content/drive/My Drive/FL_LSTM_CODE/Datasets/mobiact2.csv'  # Path to extracted CSV
-        self.ZIP_FILE = 'E:/DA-IICT/SEM-2/Minor_Project/Final Paper/Code/FL_LSTM_CODE/Datasets/mobiact2.csv'
+        self.SAVE_FOLDER = os.path.join('/kaggle/working', f'results/overlap_{overlap}')
+        self.DATA_FILE = '/kaggle/working/Datasets/mobiact2.csv'  # Path to extracted CSV
+        self.ZIP_FILE = '/kaggle/working/Datasets/mobiact2.zip' 
         self.BATCH_SIZE = 16
         self.CLIENT_EPOCHS = 10
         self.LEARNING_RATE = 0.01
