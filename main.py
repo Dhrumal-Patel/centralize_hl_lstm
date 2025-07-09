@@ -10,7 +10,6 @@ from sklearn.metrics import precision_recall_fscore_support
 from config import Config
 from dataset import prepare_centralized_data, verify_dataset
 from model import LSTMModel
-import zipfile
 
 # Custom JSON encoder for numpy types
 class NumpyEncoder(json.JSONEncoder):
@@ -29,14 +28,6 @@ def convert_keys_to_json_serializable(obj):
     elif isinstance(obj, list):
         return [convert_keys_to_json_serializable(item) for item in obj]
     return obj
-
-def extract_zip(zip_path, extract_path):
-    """Extract the ZIP file to the specified path."""
-    print(f"Extracting {zip_path} to {extract_path}...")
-    os.makedirs(extract_path, exist_ok=True)
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(extract_path)
-    print(f"Extraction complete. Files extracted to {extract_path}")
 
 def compute_model_norm(model):
     """Compute the L2 norm of model parameters for debugging."""
@@ -322,12 +313,9 @@ if __name__ == "__main__":
         config = Config(overlap=overlap)
         os.makedirs(config.SAVE_FOLDER, exist_ok=True)
         
-        # Extract ZIP file if CSV doesn't exist
+        # Verify dataset exists
         if not os.path.exists(config.DATA_FILE):
-            if os.path.exists(config.ZIP_FILE):
-                extract_zip(config.ZIP_FILE, os.path.dirname(config.DATA_FILE))
-            else:
-                raise FileNotFoundError(f"ZIP file not found at {config.ZIP_FILE}")
+            raise FileNotFoundError(f"Dataset file not found at {config.DATA_FILE}")
         
         # Verify dataset
         verify_dataset(config)
