@@ -10,10 +10,10 @@ csv.field_size_limit(2147483647)
 class Config:
     def __init__(self, overlap=0.0):
         self.OVERLAP = overlap
-        self.SAVE_FOLDER = '/content/drive/My Drive/FL_LSTM_CODE/results/overlap_{}'.format(overlap)
+        self.SAVE_FOLDER = os.path.join(os.getcwd(), f'federated_results/overlap__{}'.format(overlap)
         self.DATA_FILE = '/content/drive/My Drive/FL_LSTM_CODE/Datasets/mobiact2.csv'  # Path to extracted CSV
-        self.ZIP_FILE = '/content/drive/My Drive/FL_LSTM_CODE/Datasets/mobiact2.zip'  # Path to ZIP file
-        self.BATCH_SIZE = 32
+        self.ZIP_FILE = 'E:/DA-IICT/SEM-2/Minor_Project/Final Paper/Code/FL_LSTM_CODE/Datasets/mobiact2.csv'
+        self.BATCH_SIZE = 16
         self.CLIENT_EPOCHS = 10
         self.LEARNING_RATE = 0.01
         self.HIDDEN_SIZE_BINARY = 128
