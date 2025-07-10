@@ -14,7 +14,7 @@ class Config:
         self.DATA_FILE = 'E:/DA-IICT/SEM-2/Minor_Project/Final Paper/Code/FL_LSTM_CODE/Datasets/mobiact2.csv'
         self.BATCH_SIZE = 16
         self.CLIENT_EPOCHS = 10
-        self.LEARNING_RATE = 0.01
+        self.LEARNING_RATE = 0.001
         self.HIDDEN_SIZE_BINARY = 128
         self.HIDDEN_SIZE_MULTICLASS = 256
         self.NUM_LAYERS = 2
